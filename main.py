@@ -39,3 +39,4 @@ else:
 
 #ストリームリットアプリの起動
 streamlit run app.py
+#junnpei
