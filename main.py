@@ -37,6 +37,3 @@ if len(posts) == 0:
 else:
     show_posts()
 
-#ストリームリットアプリの起動
-streamlit run app.py
-#junnpei
