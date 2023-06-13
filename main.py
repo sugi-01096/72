@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 
 st.text("ヤッハロー")
-
+#         ↑ガハマすこ
 
 # 投稿データを保持するリスト
 posts = []
