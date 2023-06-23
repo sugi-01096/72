@@ -1,5 +1,7 @@
 import streamlit as st
 import json
+from datetime import datetime
+import pytz
 
 # 禁止ワードのリスト
 banned_words = ["馬鹿", "禁止ワード2", "禁止ワード3"]
@@ -15,14 +17,16 @@ def check_post_content(title, content):
     return title, content
 
 def save_post(title, content):
-    post = {"title": title, "content": content}
+    now = datetime.now(pytz.timezone("Asia/Tokyo")).strftime("%Y-%m-%d %H:%M:%S")
+    post = {"title": title, "content": content, "timestamp": now}
     with open('posts.json', 'a') as file:
-        json.dump(post, file)
+        file.write(json.dumps(post))
         file.write('\n')
 
 def load_posts():
     with open('posts.json', 'r') as file:
-        return [json.loads(line) for line in file]
+        lines = file.readlines()
+        return [json.loads(line) for line in lines]
 
 def main():
     st.title("掲示板アプリ")
@@ -50,6 +54,7 @@ def main():
         for post in posts:
             st.text(post["title"])
             st.text(post["content"])
+            st.text("投稿時刻: " + post.get("timestamp", ""))
             st.markdown("---")
 
 if __name__ == "__main__":
