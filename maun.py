@@ -54,9 +54,9 @@ def main():
     else:
         for post in posts:
             # 各タイトルにリンクを付けて表示
-            post_url = f"<a href='https://wikiwiki.jp/{urllib.parse.quote(post['title'])}'>{post['title']}</a>"
-            st.markdown(post_url, unsafe_allow_html=True)
+            post_url = f"<a href='https://maichan-bord-{urllib.parse.quote(post['title'])}.streamlit.app'>{post['title']}</a>"
             st.write(post['content'])
+            st.markdown(post_url, unsafe_allow_html=True)
             st.markdown("---")
 
 if __name__ == "__main__":
