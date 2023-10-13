@@ -1,11 +1,17 @@
 import streamlit as st
 import json
+import pandas as pd
 from datetime import datetime
 import pytz
 import urllib.parse
 
 # 禁止ワードのリスト
-banned_words = "toxic.txt"
+# Excelファイルから読み込む
+def load_banned_words():
+    df = pd.read_excel("禁止用語リスト.xlsx")
+    return df['禁止用語'].tolist()
+
+banned_words = load_banned_words()
 
 # ユーザーの投稿内容をチェックする関数
 def check_post_content(title, content):
@@ -17,6 +23,7 @@ def check_post_content(title, content):
             content = content.replace(banned_word, "＠" * len(banned_word))
     return title, content
 
+# 以下のコードは変更なし
 def save_post(title, content):
     now = datetime.now(pytz.timezone("Asia/Tokyo"))
     now_str = now.strftime("%Y-%m-%d %H:%M:%S")
