@@ -72,7 +72,7 @@ def main():
             # 各タイトルにリンクを付けて表示
             post_url = f"<a href='https://maichan-bord-{urllib.parse.quote(post['title'])}.streamlit.app'>{post['title']}</a>"
             st.subheader(post['content'])
-            st.write(post['timestamp'])  # タイムスタンプを表示
+            st.write(post['timestamp'])  # タイムスタンプ
             st.markdown(post_url, unsafe_allow_html=True)
             st.markdown("---")
 
