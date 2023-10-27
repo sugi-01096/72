@@ -9,8 +9,6 @@ import urllib.parse
 # Excelファイルから読み込む
 df = pd.read_excel("banned_list.xlsx", sheet_name=0)
 banned_words = df['禁止ワード'].tolist()
-st.write(banned_words)
-
 
 # ユーザーの投稿内容をチェックする関数
 def check_post_content(title, content):
