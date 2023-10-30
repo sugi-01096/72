@@ -66,11 +66,11 @@ def main():
     posts = load_posts()
     st.subheader("保存された投稿")# 保存された投稿の表示
 
-if not posts:
+    if not posts:
         st.info("まだ投稿がありません。")#何も投稿がないときはまだ投稿がありませんと表示
-else:
+    else:
         for post in posts:
-            post_url = f"<a href='https://maichan-bord-{urllib.parse.quote(post['title'])}.streamlit.app'>{post['title']}</a>"# 各タイトルにhttps://maichan-bord-＋title+.streamlit.appになるようにリンクを付けて表示
+            post_url = f"<a href='https://maichan-bord-{urllib.parse.quote(post['title'])}.streamlit.app'>{post['title']}</a>"
             st.subheader(post['content'])
             st.write(post['timestamp'])  # タイムスタンプ
             st.markdown(post_url, unsafe_allow_html=True)
