@@ -38,12 +38,12 @@ def load_posts():
         lines = file.readlines()
         posts = [json.loads(line.strip()) for line in lines]
         
-       for post in posts: # タイムスタンプを日本時間に変換
+    for post in posts: # タイムスタンプを日本時間に変換
             timestamp = datetime.strptime(post['timestamp'], "%Y-%m-%d %H:%M:%S")
             timestamp = pytz.timezone("Asia/Tokyo").localize(timestamp)
             post['timestamp'] = timestamp.strftime("%Y-%m-%d %H:%M:%S")
 
-         return posts
+    return posts
        
 
 def main():
